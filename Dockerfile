@@ -32,4 +32,3 @@ RUN echo '{' >> /root/.httpie/config.json && \
 
 VOLUME /root
 WORKDIR /root
-ENTRYPOINT ["/bin/bash"]
