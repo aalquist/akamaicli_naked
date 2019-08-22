@@ -1,0 +1,14 @@
+services:
+  - docker
+
+script:
+  - echo $TRAVIS_SECURE_ENV_VARS
+  - bash dockerlogin.sh
+  - commitId=$(git log -1 --pretty=%H)
+  - echo $commitId
+  - NAME=aaalquis/akamaicli_naked
+  - echo $NAME
+  - docker build -t $NAME:$commitId .
+  - docker tag $NAME:$commitId $NAME:latest 
+  - docker tag $NAME:$commitId $NAME:v0.1 
+  - docker push $NAME 
